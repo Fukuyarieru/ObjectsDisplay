@@ -1,3 +1,5 @@
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+
 public class ObjectsDisplay<T>
 {
     private int Width;
@@ -48,8 +50,7 @@ public class ObjectsDisplay<T>
         Height = tHeight;
         Display = new Object<T>[Width, Height];
     }
-
-    public ObjectsDisplay(int Width, int Height)
+        public ObjectsDisplay(int Width, int Height)
     {
         if (Width >= 0 && Height >= 0)
         {
