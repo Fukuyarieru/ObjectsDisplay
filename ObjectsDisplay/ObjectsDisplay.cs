@@ -2,42 +2,110 @@ public class ObjectsDisplay<T>
 {
     private int Width;
     private int Height;
+    private int Capacity;
     private Object<T>[,] Display;
+
+    public ObjectsDisplay(int ObjectsAmount, T CustomObject)
+    {
+        if (ObjectsAmount <= 0)
+            ObjectsAmount = 1;
+        Capacity = ObjectsAmount;
+        int tWidth = 0; // t- for Temporary
+        int tHeight = 0;
+        //if (ObjectsAmount > 100)
+        //    tHeight = ObjectsAmount / 8;
+        while (tWidth * tHeight != ObjectsAmount)
+        {
+            tHeight++;
+            tWidth = 0;
+            while (tWidth <= tHeight && tWidth * tHeight != ObjectsAmount)
+            {
+                tWidth++;
+            }
+        }
+        Width = tWidth;
+        Height = tHeight;
+        Display = new Object<T>[Width, Height];
+        FillDisplay(CustomObject);
+    }
+    public ObjectsDisplay(int ObjectsAmount)
+    {
+        if (ObjectsAmount <= 0)
+            ObjectsAmount = 1;
+        Capacity = ObjectsAmount;
+        int tWidth = 0; // t- for Temporary
+        int tHeight = 0;
+        while (tWidth * tHeight != ObjectsAmount)
+        {
+            tHeight++;
+            tWidth = 0;
+            while (tWidth <= tHeight && tWidth * tHeight != ObjectsAmount)
+            {
+                tWidth++;
+            }
+        }
+        Width = tWidth;
+        Height = tHeight;
+        Display = new Object<T>[Width, Height];
+    }
 
     public ObjectsDisplay(int Width, int Height)
     {
-        this.Width = Width;
-        this.Height = Height;
-        Display = new Object<T>[Width, Height];
-        //FillDisplay(" "); // Initialize display with default value
+        if (Width >= 0 && Height >= 0)
+        {
+            this.Width = Width;
+            this.Height = Height;
+            Capacity = Width * Height;
+            Display = new Object<T>[Width, Height];
+        }
     }
 
     public ObjectsDisplay(int Width, int Height, T CustomObject)
     {
-        this.Width = Width;
-        this.Height = Height;
-        Display = new Object<T>[Width, Height];
-        FillDisplay(CustomObject); // Initialize display with custom object
+        if (Width >= 0 && Height >= 0)
+        {
+            this.Width = Width;
+            this.Height = Height;
+            Capacity = Width * Height;
+            Display = new Object<T>[Width, Height];
+            FillDisplay(CustomObject); // Initialize display with custom object
+        }
     }
     public void FillDisplay(T CustomObject)
     {
-        if (Display != null && CustomObject != null)
-            for (int i = 0; i < Width; i++)
-                for (int j = 0; j < Height; j++)
-                    if (Display[i, j] != null)
-                        Display[i, j].SetValue(CustomObject);
-                    else
-                        Display[i, j] = new Object<T>(CustomObject);
+        if (Display != null)
+            if (CustomObject != null)
+                for (int i = 0; i < Width; i++)
+                    for (int j = 0; j < Height; j++)
+                        if (Display[i, j] != null)
+                            Display[i, j].SetValue(CustomObject);
+                        else
+                            Display[i, j] = new Object<T>(CustomObject);
+            else
+                for (int i = 0; i < Width; i++)
+                    for (int j = 0; j < Height; j++)
+                        if (Display[i, j] != null)
+                            Display[i, j].SetValue("null");
+                        else
+                            Display[i, j] = new Object<T>("null");
     }
     public void FillDisplay(string CustomObject)
     {
-        if (Display != null && CustomObject != null)
-            for (int i = 0; i < Width; i++)
-                for (int j = 0; j < Height; j++)
-                    if (Display[i, j] != null)
-                        Display[i, j].SetValue(CustomObject);
-                    else
-                        Display[i, j] = new Object<T>(CustomObject);
+        if (Display != null)
+            if (CustomObject != null)
+                for (int i = 0; i < Width; i++)
+                    for (int j = 0; j < Height; j++)
+                        if (Display[i, j] != null)
+                            Display[i, j].SetValue(CustomObject);
+                        else
+                            Display[i, j] = new Object<T>(CustomObject);
+            else
+                for (int i = 0; i < Width; i++)
+                    for (int j = 0; j < Height; j++)
+                        if (Display[i, j] != null)
+                            Display[i, j].SetValue("null");
+                        else
+                            Display[i, j] = new Object<T>("null");
     }
     public void ClearDisplay()
     {
@@ -65,7 +133,7 @@ public class ObjectsDisplay<T>
         for (int i = 0; i < Height; i++)
         {
             for (int j = 0; j < Width; j++)
-                if (Display[i, j] != null)
+                if (Display[j, i] != null)
                     str += Display[j, i].ToString() + "\t";
                 else str += "null\t";
             str += "\n";
@@ -156,5 +224,9 @@ public class ObjectsDisplay<T>
     public int GetHeight()
     {
         return Height;
+    }
+    public int GetCapacity()
+    {
+        return Capacity;
     }
 }

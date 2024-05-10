@@ -19,18 +19,32 @@
 
         Display.SetObject(2, 2, "X");
         Display.PrintRender();
-        Display.FillDisplay("Balls");
+        Display.FillDisplay("y's");
         Display.PrintRender();
         Display.SetObject(1, 1, "O");
         Display.SetObject(3, 1, "O");
         Display.SetObject(2, 2, "O");
         Display.SetObject(2, 3, "O");
         Display.SetObject(2, 4, "H");
+        Display.SetObject(1, 4, "H");
+        Display.SetObject(3, 4, "H");
         Display.PrintRender();
 
         Display.SetObject(3, 3, null);
         Display.PrintRender();
+
+
+        Display = new ObjectsDisplay<string>(100, "ass");
+        Display.PrintRender();
+        Display = new ObjectsDisplay<string>(5823, "IloDi");
+        Display.PrintRender();
     }
+
+
+
+
+
+
     public static bool Runner()
     {
         bool Continue = false;
