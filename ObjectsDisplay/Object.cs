@@ -4,42 +4,42 @@ public class Object<T>
 
     public Object()
     {
-        Value = " ";
+        Value = new string(" ");
     }
     public Object(string CustomObject)
     {
-        Value = CustomObject;
+        if (CustomObject != null)
+            Value = new string(CustomObject.ToString());
     }
-     public Object(T CustomObject)
+    public Object(T CustomObject)
     {
-        Value = GenericHandler(CustomObject);
+        if (CustomObject != null)
+            Value = new string(CustomObject.ToString());
     }
     public string GetValue()
     {
         return Value;
     }
-    public void SetValue(string Value)
+    public void SetValue()
     {
-        this.Value = Value;
+        Value = new string(" ");
+    }
+    public void SetValue(string CustomObject)
+    {
+        if (CustomObject != null)
+            Value = new string(CustomObject.ToString());
     }
     public void SetValue(T CustomObject)
     {
-        this.Value = GenericHandler(CustomObject);
+        if (CustomObject != null)
+            Value = new string(CustomObject.ToString());
     }
-    public void SetValue()
+    public void SetValue(Object<string> @object)
     {
-        this.Value = " ";
+        this.Value = new string(" ");
     }
     public override string ToString()
     {
         return Value;
-    }
-    private string GenericHandler(T CustomObject)
-    {
-        // temporary fix:
-        return "A0";
-        //if (CustomObject == null)
-        //    return " ";
-        //return CustomObject.ToString();
     }
 }
