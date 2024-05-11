@@ -11,6 +11,8 @@ public static class Runner
         str += "3. Finish\n";
         str += "Your answer:\t";
 
+        Console.WriteLine(str);
+
         input = int.Parse(Console.ReadLine());
 
         while (input > 0 && input < 4)
@@ -26,13 +28,15 @@ public static class Runner
         int input = 0;
 
         string str = "";
-        str += "What would you like to do\n?";
+        str += "What would you like to do?\n";
         str += "1. Add object\n";
         str += "2. Clear coordinate\n";
         str += "3. Fill Display with a set Object\n";
         str += "4. Clear Display to be completly empty\n";
         str += "5. Clear Display to be Nulls\n";
         str += "Your answer:\t";
+
+        Console.WriteLine(str);
 
         input = int.Parse(Console.ReadLine());
 
@@ -53,6 +57,8 @@ public static class Runner
         str += "1. Create using width and height";
         str += "2. Craete using a set object amount";
         str += "Your answer:\t";
+
+        Console.WriteLine(str);
 
         input = int.Parse(Console.ReadLine());
 
@@ -95,48 +101,72 @@ public static class Runner
         Console.Write("Enter Yes/No:\t");
         string str = "";
         str = Console.ReadLine();
+        Console.WriteLine();
         while (str.ToLower() != "yes" && str.ToLower() != "no")
         {
             Console.Write("Incorrect input, value must be Yes/No.\nEnter Yes/No:\t");
             str = Console.ReadLine();
+            Console.WriteLine();
         }
         if (str.ToLower() == "yes")
         {
             Console.WriteLine("What would you like the objects to be?");
             Console.Write("Your answer:\t");
             str = Console.ReadLine();
+            Console.WriteLine();
 
             Console.WriteLine("Are you sure you want " + str + " to be the objects?");
             Console.Write("Enter Yes/No:\t");
             string str2 = "";
             str2 = Console.ReadLine();
+            Console.WriteLine();
             while (str2.ToLower() != "yes" && str2.ToLower() != "no")
             {
                 Console.WriteLine("Incorrect input, value must be Yes/No.\nEnter Yes/No:\t");
                 str2 = Console.ReadLine();
+                Console.WriteLine();
             }
             if (str2.ToLower() == "yes")
+            {
+                Console.WriteLine();
+                Console.WriteLine("Width=" + iWidth + " ,Height=" + iHeight + " ,Object=" + str);
+                Console.WriteLine();
                 return new ObjectsDisplay<string>(iWidth, iHeight, str);
+            }
             while (str2.ToLower() == "no")
             {
                 Console.WriteLine("What would you like the objects to be?");
                 Console.Write("Your answer:\t");
                 str = Console.ReadLine();
+                Console.WriteLine();
 
                 Console.WriteLine("Are you sure you want " + str + " to be the objects?");
                 Console.Write("Enter Yes/No:\t");
                 str2 = "";
                 str2 = Console.ReadLine();
+                Console.WriteLine();
                 while (str2.ToLower() != "yes" && str2.ToLower() != "no")
                 {
                     Console.WriteLine("Incorrect input, value must be Yes/No.\nEnter Yes/No:\t");
                     str2 = Console.ReadLine();
+                    Console.WriteLine();
                 }
                 if (str2.ToLower() == "yes")
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Width=" + iWidth + " ,Height=" + iHeight + " ,Object=" + str);
+                    Console.WriteLine();
                     return new ObjectsDisplay<string>(iWidth, iHeight, str);
+                }
             }
+            Console.WriteLine();
+            Console.WriteLine("Width=" + iWidth + " ,Height=" + iHeight + " ,Object=" + str);
+            Console.WriteLine();
             return new ObjectsDisplay<string>(iWidth, iHeight, str);
         }
+        Console.WriteLine();
+        Console.WriteLine("Width=" + iWidth + " ,Height=" + iHeight);
+        Console.WriteLine();
         return new ObjectsDisplay<string>(iWidth, iHeight);
     }
 

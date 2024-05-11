@@ -38,5 +38,7 @@
 
         Display = Runner.CreateDisplayCords();
         Display.PrintRender();
+        Runner.DisplayModification();
+        Runner.DisplayConfiguration();
     }
 }
