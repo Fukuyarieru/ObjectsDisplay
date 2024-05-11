@@ -1,6 +1,7 @@
 public class Object<T>
 {
     private string Value;
+    private T CustomObject;
 
     public Object() // THIS REALLY! SHOULD STAY LIKE THIS, FOR AESTHETIC AND FOR BETTER MAINTENANCE LATER
     {
@@ -14,7 +15,10 @@ public class Object<T>
     public Object(T CustomObject)
     {
         if (CustomObject != null)
+        {
             Value = new string(CustomObject.ToString());
+            this.CustomObject = CustomObject;
+        }
     }
     public string GetValue()
     {
@@ -32,10 +36,19 @@ public class Object<T>
     public void SetValue(T CustomObject)
     {
         if (CustomObject != null)
+        {
             Value = new string(CustomObject.ToString());
+            this.CustomObject = CustomObject;
+        }
     }
     public override string ToString()
     {
         return Value;
+    }
+    public T GetCustomObject()
+    {
+        if (CustomObject == null)
+            Console.WriteLine("WARNING: Called function GetCustomObject returned a null!");
+         return CustomObject;
     }
 }

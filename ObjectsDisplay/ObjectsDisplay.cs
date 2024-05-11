@@ -218,6 +218,14 @@ public class ObjectsDisplay<T>
         else
             Display[x, y] = new Object<T>();
     }
+    public string GetObject(int x, int y)
+    {
+        return Display[x, y].GetValue();
+    }
+    public T GetCustomObject(int x, int y)
+    {
+        return Display[x, y].GetCustomObject();
+    }
     public int GetWidth()
     {
         return Width;

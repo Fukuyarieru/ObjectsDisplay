@@ -17,6 +17,10 @@
         Display.SetObject(2, 2, "X");
         Display.PrintRender();
         Display.FillDisplay("y's");
+
+        Console.WriteLine(Display.GetObject(1, 1));
+        Console.WriteLine(Display.GetCustomObject(1, 1));
+
         Display.PrintRender();
         Display.SetObject(1, 1, "O");
         Display.SetObject(3, 1, "O");
