@@ -31,7 +31,7 @@
         Display.PrintRender();
 
 
-        Display = new ObjectsDisplay<string>(100, "ass");
+        Display = new ObjectsDisplay<string>(100, "ssa");
         Display.PrintRender();
         Display = new ObjectsDisplay<string>(5823, "IloDi");
         Display.PrintRender();

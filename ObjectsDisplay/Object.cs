@@ -2,7 +2,7 @@ public class Object<T>
 {
     private string Value;
 
-    public Object() // THIS REALLY! SHOULD STAY LIKE THIS, FOR ASTHETIC AND FOR BETTER MAINTAINENCE LATER
+    public Object() // THIS REALLY! SHOULD STAY LIKE THIS, FOR AESTHETIC AND FOR BETTER MAINTENANCE LATER
     {
         Value = new string(" ");
     }
