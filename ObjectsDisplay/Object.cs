@@ -34,10 +34,6 @@ public class Object<T>
         if (CustomObject != null)
             Value = new string(CustomObject.ToString());
     }
-    public void SetValue(Object<string> @object)
-    {
-        this.Value = new string(" ");
-    }
     public override string ToString()
     {
         return Value;

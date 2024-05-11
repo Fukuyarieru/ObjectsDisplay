@@ -50,7 +50,7 @@ public class ObjectsDisplay<T>
         Height = tHeight;
         Display = new Object<T>[Width, Height];
     }
-        public ObjectsDisplay(int Width, int Height)
+    public ObjectsDisplay(int Width, int Height)
     {
         if (Width >= 0 && Height >= 0)
         {
