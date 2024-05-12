@@ -46,9 +46,9 @@ public class Object<T>
         return Value;
     }
     public T GetCustomObject()
-    {
+    { // null bug here...
         if (CustomObject == null)
             Console.WriteLine("WARNING: Called function GetCustomObject returned a null!");
-         return CustomObject;
+        return CustomObject;
     }
 }

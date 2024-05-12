@@ -62,7 +62,7 @@ public static class Runner
 
         input = int.Parse(Console.ReadLine());
 
-        while (input > 0 && input < 3)
+        while (input < 1 && input > 2)
         {
             Console.Write("\nIncorrect input.\nYour answer:");
             input = int.Parse(Console.ReadLine());
@@ -72,12 +72,13 @@ public static class Runner
     }
     public static ObjectsDisplay<string> CreateDisplayCords()
     {
+        string[] OptionsYesNo = { "yes", "no" };
         int iWidth; // i- for input
         int iHeight;
 
         Console.Write("Enter width:\t");
         iWidth = int.Parse(Console.ReadLine());
-        while (iWidth <= 0)
+        while (!(ValidOptions(0, iWidth)))
         {
             Console.Write("\nIncorrect input, value must be greater than 0.\nEnter width:\t");
             iWidth = int.Parse(Console.ReadLine());
@@ -87,7 +88,7 @@ public static class Runner
 
         Console.Write("Enter height:\t");
         iHeight = int.Parse(Console.ReadLine());
-        while (iHeight <= 0)
+        while (!(ValidOptions(0, iHeight)))
         {
             Console.Write("\nIncorrect input, value must be greater than 0.\nEnter height:\t");
             iHeight = int.Parse(Console.ReadLine());
@@ -102,7 +103,7 @@ public static class Runner
         string str = "";
         str = Console.ReadLine();
         Console.WriteLine();
-        while (str.ToLower() != "yes" && str.ToLower() != "no")
+        while (!(ValidOptions(OptionsYesNo, str.ToLower())))
         {
             Console.Write("Incorrect input, value must be Yes/No.\nEnter Yes/No:\t");
             str = Console.ReadLine();
@@ -120,7 +121,7 @@ public static class Runner
             string str2 = "";
             str2 = Console.ReadLine();
             Console.WriteLine();
-            while (str2.ToLower() != "yes" && str2.ToLower() != "no")
+            while (!(ValidOptions(OptionsYesNo, str2.ToLower())))
             {
                 Console.WriteLine("Incorrect input, value must be Yes/No.\nEnter Yes/No:\t");
                 str2 = Console.ReadLine();
@@ -145,7 +146,7 @@ public static class Runner
                 str2 = "";
                 str2 = Console.ReadLine();
                 Console.WriteLine();
-                while (str2.ToLower() != "yes" && str2.ToLower() != "no")
+                while (!(ValidOptions(OptionsYesNo, str2.ToLower())))
                 {
                     Console.WriteLine("Incorrect input, value must be Yes/No.\nEnter Yes/No:\t");
                     str2 = Console.ReadLine();
@@ -168,6 +169,26 @@ public static class Runner
         Console.WriteLine("Width=" + iWidth + " ,Height=" + iHeight);
         Console.WriteLine();
         return new ObjectsDisplay<string>(iWidth, iHeight);
+    }
+
+
+
+    public static bool ValidOptions(string[] arr, string input)
+    {
+        for (int i = 0; i < arr.Length; i++)
+            if (arr[i] == input)
+                return true;
+        return false; ;
+    }
+    public static bool ValidOptions(int LowLim, int HighLim, int input)
+    {
+        if (input >= LowLim && input < HighLim)
+            return true;
+        return false;
+    }
+    public static bool ValidOptions(int LowLim, int input)
+    {
+        return input >= LowLim;
     }
 
 
