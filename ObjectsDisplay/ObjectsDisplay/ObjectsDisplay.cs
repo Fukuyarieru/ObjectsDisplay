@@ -1,5 +1,7 @@
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 
+using System.Reflection.Metadata;
+
 public class ObjectsDisplay<T>
 {
     private int Width;
@@ -218,6 +220,35 @@ public class ObjectsDisplay<T>
         else
             Display[x, y] = new Object<T>();
     }
+    public bool Has(Object<T> obj)
+    {
+        for (int i = 0; i < Display.GetLength(0); i++)
+            for (int j = 0; j < Display.GetLength(1); j++)
+                if (Display[i, j] == obj)
+                    return true;
+        return false;
+    }
+    public int[] Find(Object<T> obj)
+    {
+        for (int i = 0; i < Display.GetLength(0); i++)
+            for (int j = 0; j < Display.GetLength(1); j++)
+                if (Display[i, j] == obj)
+                    return new int[] { i, j };
+        return new int[] { -1,-1 };
+    }
+    // cannot make SwitchWith containing objects as unsafe garantuee is needed
+    public void SwitchWith(int x1, int y1, int x2, int y2)
+    {
+        Object<T> obj = Display[x1, y1];
+        Display[x1, y1] = Display[x2, y2];
+        Display[x2, y2] = obj;
+
+    }
+    // cannot make SwitchTo of obj to <anything> as garantuee of obj first existing is needed, quite unsafe
+    //public void SwitchTo(int x1, int y1, int x2, int y2)
+    //{
+    // idk if i need this
+    //}
     public string GetObject(int x, int y)
     {
         return Display[x, y].GetValue();
@@ -238,4 +269,5 @@ public class ObjectsDisplay<T>
     {
         return Capacity;
     }
+    //public static tester
 }
